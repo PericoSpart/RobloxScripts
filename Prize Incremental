@@ -1,0 +1,23 @@
+--- WIP, only teleports you to the presents.
+--- https://www.roblox.com/games/15547749936/Update1-Prize-Incremental
+
+local presents = game.Workspace.Presents
+local player = game.Players.LocalPlayer
+
+local function teleportToBlock(block)
+    local position = block.Value
+    local cframe = CFrame.new(position)
+    player.Character.HumanoidRootPart.CFrame = cframe
+end
+
+while true do
+    for _, model in ipairs(presents:GetChildren()) do
+        if model:IsA("Model") then
+            local posBlock = model:FindFirstChild("Pos")
+            if posBlock then
+		wait(0.1) - if game crashes or freezes change this value higher.
+                teleportToBlock(posBlock)
+            end
+        end
+    end
+end
